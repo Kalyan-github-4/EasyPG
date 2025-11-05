@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS property_listings (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  type VARCHAR(50) NOT NULL CHECK (type IN ('mess', 'hostel', 'room')),
+  location TEXT NOT NULL,
+  nearest_college VARCHAR(255),
+  distance VARCHAR(50),
+  price DECIMAL(10, 2) NOT NULL,
+  price_type VARCHAR(20) NOT NULL CHECK (price_type IN ('month', 'meal', 'night')),
+  description TEXT,
+  amenities TEXT[],
+  availability VARCHAR(20) DEFAULT 'available',
+  owner_name VARCHAR(100) NOT NULL,
+  owner_phone VARCHAR(20) NOT NULL,
+  owner_email VARCHAR(100) NOT NULL,
+  capacity INTEGER,
+  photos TEXT[],
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW()
+);
